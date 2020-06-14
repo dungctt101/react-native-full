@@ -1,0 +1,20 @@
+const Colors = {
+  white: '#ffffff',
+  black: '#000000',
+  title: '#335272',
+  title_highlight: '#1569b2',
+  title_highlight_yellow: '#f07025',
+  title_fuzzy: '#909ca8',
+  bg_button_highlight: '#ff9434',
+  bg_button_fuzzy: '#909ca8',
+  textPlaceHolder: '#b1bcc7',
+  accent: '#F3534A',
+  primary: '#0AC4BA',
+  secondary: '#2BDA8E',
+  tertiary: '#FFE358',
+  black: '#323643',
+  white: '#FFFFFF',
+  gray: '#9DA3B4',
+  gray2: '#C5CCD6',
+};
+export default Colors;
