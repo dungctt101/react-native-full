@@ -14,7 +14,9 @@ import {
 const sizeWindow = Dimensions.get('window');
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
-import {LazyImage, Sizes, Modal} from './index';
+import LazyImage from "./LazyImage"
+import Sizes from "./Sizes"
+import Modal from "./Modal"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {stringIsEmpty, objectIsNull, arrayIsEmpty} from './Functions';
 

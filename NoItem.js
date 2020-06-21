@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 // import {images} from './res';
-import {Sizes, Colors, ButtonD as Button} from './index';
+import Sizes from "./Sizes"
+import ButtonD from "./Button"
 const NoItem = ({title, onPress, theme}) => {
   //   sizeImage: Sizes.s50,
   //   image: images.ic_empty,
