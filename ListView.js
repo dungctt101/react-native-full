@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, ScrollView, RefreshControl,Text } from "react-native";
-import { arrayIsEmpty, objectIsNull } from '../react-native-basic/src/Functions';
+import { arrayIsEmpty, objectIsNull } from './Functions';
 import Swipeout from './swipe';
 /**
  * TODO: ListViews

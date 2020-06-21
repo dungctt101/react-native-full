@@ -10,7 +10,7 @@ import Button from './Button';
 import Block from './Block';
 import Modal from './modal/index';
 import { theme } from "../src/res";
-import {arrayIsEmpty, objectIsNull, stringIsEmpty} from '../react-native-basic/src/Functions';
+import {arrayIsEmpty, objectIsNull, stringIsEmpty} from './Functions';
 import {Input} from '.';
 
 export default class ButtonSelect extends React.Component {

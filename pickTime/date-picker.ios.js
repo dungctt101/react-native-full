@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import moment from './moment';
 import Picker from './picker';
-import {objectIsNull} from '../../react-native-basic/src/Functions';
+import {objectIsNull} from '../Functions';
 
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
 const firstTimeOnChange = {

@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {TouchableWithoutFeedback, Animated, Easing, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import ViewOverflow from './viewOverFlow';
-import {objectIsNull} from '../../../react-native-basic/src/Functions';
+import {objectIsNull} from '../../Functions';
 
 const AnimatedViewOverflow = Animated.createAnimatedComponent(ViewOverflow);
 
