@@ -11,78 +11,180 @@ import {
   TouchableWithoutFeedback,
   BackHandler,
 } from 'react-native';
-// import { themes} from './index';
-
-// import OneComponent from '../OneComponent';
-// import ThreeComponent from '../ThreeComponent';
-// import SecondComponent from '../SecondComponent';
-// import FourComponent from '../FourComponent';
 const sizeWindow = Dimensions.get('window');
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
-// import Modal from '../../../../react-native-full/modal';
 import {LazyImage, Sizes, Modal} from './index';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {stringIsEmpty, objectIsNull, arrayIsEmpty} from './Functions';
-// const tabBarSetting = props => {
-//   return [
-//     {
-//       key: 0,
-//       icon: 'home',
-//       title: 'One',
-//       view: <OneComponent {...props} />,
-//       leftView: 'Login',
-//       rightView: 'Forgot',
-//     },
-//     {
-//       key: 1,
-//       image: images.message,
-//       title: 'Two',
-//       view: <SecondComponent {...props} />,
-//       leftView: 'Login',
-//       rightView: 'Forgot',
-//     },
-//     {
-//       key: 2,
-//       image: images.message,
-//       title: 'Three',
-//       view: <ThreeComponent {...props} />,
-//       leftView: 'Login',
-//       rightView: 'Forgot',
-//     },
-//     {
-//       key: 3,
-//       image: images.message,
-//       title: 'Four',
-//       view: <FourComponent {...props} />,
-//       leftView: 'Login',
-//       rightView: 'Forgot',
-//     },
-//   ];
-// };
-// const leftMenuSetting = [
-//   {
-//     key: 0,
-//     title: 'menu 1',
-//     icon: images.message,
-//     color: theme.colors.accent,
-//     // task: 'Login',
-//   },
-//   {
-//     key: 1,
-//     title: 'menu 1',
-//     icon: images.message,
-//     color: theme.colors.accent,
-//     // task: 'Forgot',
-//   },
-//   {
-//     key: 2,
-//     title: 'menu 3',
-//     icon: images.message,
-//     color: theme.colors.accent,
-//     task: 'Login',
-//   },
-// ];
+
+import TabBarAnimation from './tabBar/tabBarAnimation';
+
+import TabBarAnimation2 from './tabBar/tabBarAnimation2';
+class TabBarIcon3 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      select: this.props.select,
+    };
+  }
+  componentDidMount() {
+    this.refs.tabBar.setSelect(0);
+  }
+  render() {
+    const {onClick, menu, style, themes} = this.props;
+    return (
+      <View
+        style={{
+          // flex: 1,
+          height: Sizes.s100,
+          justifyContent: 'space-between',
+          alignItems: 'center',
+
+          backgroundColor: '#4C53DD',
+        }}>
+        <TabBarAnimation2
+          ref="tabBar"
+          onPress={tabIndex => {
+            this.setState({
+              select: tabIndex,
+            });
+            onClick(menu[tabIndex].key);
+            // eslint-disable-next-line no-console
+            // console.log('render component with index: ', tabIndex);
+          }}
+          values={menu}
+        />
+      </View>
+    );
+  }
+}
+class TabBarIcon2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      select: this.props.select,
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.select !== this.props.select) {
+      this.setState({
+        select: this.props.select,
+      });
+    }
+  }
+  render() {
+    const {onClick, menu, style, themes} = this.props;
+    const {select} = this.state;
+    const tabs = [];
+    for (var i = 0; i < menu.length; i++) {
+      const cur = i;
+      tabs.push(
+        <View
+          // style={{
+          //   backgroundColor: '#33ff33',
+          // }}
+          onPress={() => {
+            this.setState({
+              select: cur,
+            });
+            onClick(menu[cur].key);
+          }}
+          icon={menu[i].image}
+          selectedIcon={menu[i].image}
+          title={menu[i].title}
+          // screenBackgroundColor={{backgroundColor: '#008080'}}
+        />,
+        // <TouchableOpacity
+        //   style={{
+        //     flexDirection: 'column',
+        //     flex: 100 / menu.length,
+        //     paddingVertical: 10,
+        //     justifyContent: 'center',
+        //     alignItems: 'center',
+        //   }}
+        //   key={i}
+        //   onPress={() => {
+        //     this.setState({
+        //       select: cur,
+        //     });
+        //     onClick(menu[cur].key);
+        //   }}>
+        //   {!objectIsNull(menu[i].image) && (
+        //     <Image
+        //       style={{
+        //         width:
+        //           select === i
+        //             ? themes.tabBar.sizeIcon
+        //             : themes.tabBar.sizeIcon,
+        //         height: themes.tabBar.sizeIcon,
+        //         resizeMode: 'contain',
+        //         tintColor:
+        //           select === i
+        //             ? themes.tabBar.colorIconTint
+        //             : themes.tabBar.colorIcon,
+        //       }}
+        //       source={menu[i].image}
+        //     />
+        //   )}
+        //   {objectIsNull(menu[i].image) && !objectIsNull(menu[i].icon) && (
+        //     <Icon
+        //       name={menu[i].icon}
+        //       size={themes.tabBar.sizeIcon}
+        //       color={
+        //         select === i
+        //           ? themes.tabBar.colorIconTint
+        //           : themes.tabBar.colorIcon
+        //       }
+        //     />
+        //   )}
+        //   {!stringIsEmpty(menu[i].title) && (
+        //     <Text
+        //       style={{
+        //         textAlign: 'center',
+        //         marginTop: 5,
+        //         color:
+        //           select === i
+        //             ? themes.tabBar.colorIconTint
+        //             : themes.tabBar.colorIcon,
+        //         fontSize: themes.tabBar.sizeText,
+        //       }}>
+        //       {menu[i].title}
+        //     </Text>
+        //   )}
+        // </TouchableOpacity>,
+      );
+    }
+    return (
+      <TabBarAnimation
+        bgNavBar="white"
+        bgNavBarSelector="white"
+        stroke="skyblue"
+        style={{height: Sizes.s60}}>
+        {tabs}
+        {/* <TabBar.Item
+          icon={images.ic_empty}
+          selectedIcon={images.menu}
+          title="Tab1"
+          screenBackgroundColor={{backgroundColor: '#008080'}}>
+        </TabBar.Item>
+        <TabBar.Item
+          icon={images.ic_empty}
+          selectedIcon={images.menu}
+          title="Tab2"
+          screenBackgroundColor={{backgroundColor: '#F08080'}}>
+        </TabBar.Item>
+        <TabBar.Item
+          icon={images.ic_empty}
+          selectedIcon={images.menu}
+          title="Tab3"
+          screenBackgroundColor={{backgroundColor: '#485d72'}}>
+        </TabBar.Item> */}
+      </TabBarAnimation>
+    );
+  }
+}
 
 class TabBarIcon extends React.Component {
   constructor(props) {
@@ -204,11 +306,11 @@ export default class TabBar extends React.Component {
   }
   render() {
     const {tab, indexSelect} = this.state;
-    const {themes,navigation} = this.props;
+    const {themes, navigation} = this.props;
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
-        <View style={{flex: 1}}>{tab.view}</View>
-        <TabBarIcon
+        <View style={{flex: 1,backgroundColor:"#ff3333"}}>{tab.view}</View>
+        <TabBarIcon3
           themes={themes}
           style={{backgroundColor: themes.tabBar.color}}
           select={indexSelect}
