@@ -9,7 +9,7 @@ import {
 import Button from './Button';
 import Block from './Block';
 import Modal from './modal/index';
-import { theme } from "../src/res";
+import  * as theme  from "./theme";
 import {arrayIsEmpty, objectIsNull, stringIsEmpty} from './Functions';
 import {Input} from '.';
 

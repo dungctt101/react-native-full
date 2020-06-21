@@ -7,7 +7,6 @@ import ViewKeyBoard from './ViewKeyBoard';
 import Modal from './modal/index';
 
 import {stringIsEmpty, objectIsNull} from './Functions';
-import Sizes from './Sizes';
 export default class DialogAlert extends React.Component {
   constructor(props) {
     super(props);

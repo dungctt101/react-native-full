@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
 import Block from "./Block";
-import { theme } from "../src/res";
+import  * as theme  from "./theme";
 
 export default class Card extends Component {
   render() {

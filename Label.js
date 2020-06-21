@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { theme } from "../src/res";
+import  * as theme  from "./theme";
 
 export default class Label extends Component {
   render() {

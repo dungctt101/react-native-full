@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import Text from "./Text";
 import Block from "./Block";
 import Button from "./Button";
-import { theme } from "../src/res";
+import  * as theme  from "./theme";
 
 export default class Input extends Component {
   state = {
