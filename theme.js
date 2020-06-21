@@ -1,4 +1,8 @@
-import {Colors, Sizes, Strings, Functions} from './index';
+
+
+import Sizes from './Sizes';
+import Colors from './Colors';
+import Strings from './Strings';
 import {getStatusBarHeight} from './HeightStatusBar'
 const colors = {
   accent: '#F3534A',
