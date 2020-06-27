@@ -16,7 +16,7 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 import LazyImage from "./LazyImage"
 import Sizes from "./Sizes"
-import Modal from "./Modal"
+import Modal from "./modal/index"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {stringIsEmpty, objectIsNull, arrayIsEmpty} from './Functions';
 
