@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 // import {images} from './res';
 import Sizes from "./Sizes"
-import ButtonD from "./Button"
+import ButtonD from "./ButtonD"
 const NoItem = ({title, onPress, theme}) => {
   //   sizeImage: Sizes.s50,
   //   image: images.ic_empty,
@@ -28,7 +28,7 @@ const NoItem = ({title, onPress, theme}) => {
         }}>
         {title}
       </Text>
-      <Button
+      <ButtonD
         onPress={onPress}
         style={{
           backgroundColor: theme.colorButton,
@@ -43,7 +43,7 @@ const NoItem = ({title, onPress, theme}) => {
           fontWeight: 'bold',
         }}>
         Reload
-      </Button>
+      </ButtonD>
     </View>
   );
 };
