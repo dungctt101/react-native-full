@@ -21,7 +21,7 @@ export default  class ModalCustom extends Component {
     });
   }
   render() {
-    const {children, onBackPress} = this.props;
+    const {children, onBackPress,alpha} = this.props;
     const {visible} = this.state;
     return (
       <Modal
@@ -41,7 +41,7 @@ export default  class ModalCustom extends Component {
         }}
         animationIn={'slideInUp'}
         animationOut={'slideOutDown'}
-        backdropOpacity={0.5}
+        backdropOpacity={!objectIsNull(alpha)?alpha: 0.5}
         isVisible={visible}
         coverScreen={true}
         onBackdropPress={() => {
@@ -56,7 +56,7 @@ export default  class ModalCustom extends Component {
           style={{
             width: screen.width,
             flexDirection: 'column',
-            backgroundColor: '#ffffff',
+            // backgroundColor: '#ffffff',
             borderRadius: Sizes.s40,
             justifyContent: 'center',
             alignItems: 'center',

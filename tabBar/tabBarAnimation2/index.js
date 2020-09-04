@@ -5,7 +5,17 @@ import {TouchableWithoutFeedback, Animated, Easing, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import ViewOverflow from './viewOverFlow';
 import {objectIsNull} from '../../Functions';
+function hexToRGB(hex, alpha) {
+  var r = parseInt(hex.slice(1, 3), 16),
+      g = parseInt(hex.slice(3, 5), 16),
+      b = parseInt(hex.slice(5, 7), 16);
 
+  if (alpha) {
+      return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+  } else {
+      return "rgb(" + r + ", " + g + ", " + b + ")";
+  }
+}
 const AnimatedViewOverflow = Animated.createAnimatedComponent(ViewOverflow);
 
 class TabBar extends Component {
@@ -64,7 +74,7 @@ class TabBar extends Component {
 
       const animatedColorValues = this.animatedImageValues[index].interpolate({
         inputRange: [0, 1],
-        outputRange: [this.props.tintColor, 'rgb(255, 255, 255)'],
+        outputRange: [this.props.tintColor, hexToRGB(this.props.color)],
       });
 
       const animatedBubbleStyle = {
@@ -109,9 +119,16 @@ class TabBar extends Component {
           onPress={() => {
             this.setSelect(index);
           }}>
-          <AnimatedViewOverflow style={[styles.item, animatedItemStyle]}>
+          <AnimatedViewOverflow style={[{ backgroundColor: this.props.color,
+    borderRadius: 30,
+    height: 60,
+    width: 60,
+    alignItems: 'center',
+    justifyContent: 'center',}, animatedItemStyle]}>
             <Image
-              style={styles.itemMask}
+              style={{
+                tintColor: this.props.color,
+                position: 'absolute',}}
               source={require('./assets/mask.png')}
             />
             <Animated.View
@@ -202,7 +219,13 @@ class TabBar extends Component {
 
   render() {
     return (
-      <AnimatedViewOverflow style={styles.container}>
+      <AnimatedViewOverflow style={{ flexDirection: 'row',
+      height: 60,
+      width: '100%',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      backgroundColor: this.props.color
+      }}>
         {this._renderButtons()}
       </AnimatedViewOverflow>
     );
@@ -221,26 +244,19 @@ TabBar.propTypes = {
 };
 
 const styles = {
-  container: {
-    flexDirection: 'row',
-    height: 60,
-    width: '100%',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  item: {
-    backgroundColor: 'white',
-    borderRadius: 30,
-    height: 60,
-    width: 60,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  itemMask: {
-    tintColor: 'white',
-    position: 'absolute',
-  },
+  // container: {
+  //   flexDirection: 'row',
+  //   height: 60,
+  //   width: '100%',
+  //   justifyContent: 'space-around',
+  //   alignItems: 'center',
+  //   backgroundColor: 'white',
+  // },
+  
+  // itemMask: {
+  //   tintColor: 'white',
+  //   position: 'absolute',
+  // },
   bubble: {
     position: 'absolute',
     alignSelf: 'center',

@@ -31,7 +31,7 @@ class TabBarIcon3 extends React.Component {
     };
   }
   componentDidMount() {
-    this.refs.tabBar.setSelect(0);
+    this.refs.tabBar.setSelect(!objectIsNull(this.props.indexDefault)?this.props.indexDefault:0);
   }
   render() {
     const {onClick, menu, style, themes} = this.props;
@@ -43,9 +43,12 @@ class TabBarIcon3 extends React.Component {
           justifyContent: 'space-between',
           alignItems: 'center',
 
-          backgroundColor: '#4C53DD',
+          // backgroundColor: "#134b8b",
         }}>
         <TabBarAnimation2
+        
+        tintColor={this.props.tintColor}
+color={this.props.color}
           ref="tabBar"
           onPress={tabIndex => {
             this.setState({
@@ -308,11 +311,18 @@ export default class TabBar extends React.Component {
   }
   render() {
     const {tab, indexSelect} = this.state;
-    const {themes, navigation} = this.props;
+    const {themes, navigation,imageView} = this.props;
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
-        <View style={{flex: 1,backgroundColor:"#ff3333"}}>{tab.view}</View>
+
+        <View style={{flex: 1}}>
+        {!objectIsNull(imageView)&&imageView()}
+          {tab.view}
+          </View>
         <TabBarIcon3
+tintColor={this.props.tintColor}
+color={this.props.color}
+        indexDefault ={this.props.indexDefault}
           themes={themes}
           style={{backgroundColor: themes.tabBar.color}}
           select={indexSelect}
