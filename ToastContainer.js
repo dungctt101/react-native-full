@@ -13,6 +13,8 @@ import {
     Easing,
     Keyboard
 } from 'react-native';
+import Icon from "react-native-vector-icons/FontAwesome5"
+import Sizes from './Sizes';
 const TOAST_MAX_WIDTH = 0.8;
 const TOAST_ANIMATION_DURATION = 200;
 
@@ -23,7 +25,7 @@ const positions = {
 };
 
 const durations = {
-    LONG: 3500,
+    LONG: 4000,
     SHORT: 2000
 };
 
@@ -38,7 +40,7 @@ let styles = StyleSheet.create({
     containerStyle: {
         padding: 10,
         backgroundColor: '#000',
-        opacity: 0.8,
+        opacity: 0.9,
         borderRadius: 5
     },
     shadowStyle: {
@@ -248,12 +250,15 @@ class ToastContainer extends Component {
                             opacity: this.state.opacity
                         },
                         props.shadow && styles.shadowStyle,
-                        props.shadowColor && {shadowColor: props.shadowColor}
+                        props.shadowColor && {shadowColor: props.shadowColor},{flexDirection:"row",alignItems:"center",
+                        backgroundColor:this.props.error===true?"#F3534A":"#2BDA8E"
+                    }
                     ]}
                     pointerEvents="none"
                     ref={ele => this._root = ele}
                 >
-                    <Text style={[
+                    <Icon solid style ={{}} name ={this.props.error===true?"exclamation-triangle":"check-circle"} color ="#ffffff" size ={Sizes.s40}></Icon>
+                    <Text style={[{marginLeft:Sizes.s20},
                         styles.textStyle,
                         props.textStyle,
                         props.textColor && {color: props.textColor}
