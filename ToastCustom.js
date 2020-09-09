@@ -29,9 +29,9 @@ import React, {
     static positions = positions;
     static durations = durations;
   
-    static show = (message, options = {position: positions.BOTTOM, duration: durations.SHORT}) => {
+    static show = (message, options = {position: positions.BOTTOM, duration: durations.SHORT},error) => {
         return new RootSiblings(<ToastContainer
-      error = {false}
+      error = {error}
             {...options}
             visible={true}
         >
