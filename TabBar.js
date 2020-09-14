@@ -311,7 +311,7 @@ export default class TabBar extends React.Component {
   }
   render() {
     const {tab, indexSelect} = this.state;
-    const {themes, navigation,imageView} = this.props;
+    const {themes, navigation,imageView,coverView} = this.props;
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
 
@@ -358,6 +358,7 @@ color={this.props.color}
             items={this.props.leftMenuSetting}
           />
         )}
+        {!objectIsNull(coverView) &&coverView()}
       </View>
     );
   }
