@@ -363,7 +363,7 @@ color={this.props.color}
             items={this.props.leftMenuSetting}
           />
         )}
-        {!objectIsNull(coverView) &&coverView()}
+        {!objectIsNull(coverView) &&<View style={{position:"absolute",top:0,left:0,right:0,bottom:0}}>{coverView}</View>}
       </View>
     );
   }
