@@ -23,6 +23,7 @@ import {stringIsEmpty, objectIsNull, arrayIsEmpty} from './Functions';
 import TabBarAnimation from './tabBar/tabBarAnimation';
 
 import TabBarAnimation2 from './tabBar/tabBarAnimation2';
+import { getStatusBarHeight } from '@dungdang/react-native-full/HeightStatusBar';
 class TabBarIcon3 extends React.Component {
   constructor(props) {
     super(props);
@@ -39,11 +40,12 @@ class TabBarIcon3 extends React.Component {
       <View
         style={{
           // flex: 1,
-          height: Sizes.s100,
+          // height: Sizes.s100,
           justifyContent: 'space-between',
           alignItems: 'center',
-
-          // backgroundColor: "#134b8b",
+paddingBottom:getStatusBarHeight()>=44?Sizes.s20:0,
+// paddingBottom:Sizes.s70,
+          backgroundColor:this.props.color,
         }}>
         <TabBarAnimation2
         
@@ -60,6 +62,9 @@ color={this.props.color}
           }}
           values={menu}
         />
+           <View style={{
+          backgroundColor:this.props.color,position:"absolute",height:getStatusBarHeight()>=44?Sizes.s20:0,bottom:0,left:0,right:0}}></View>
+       
       </View>
     );
   }

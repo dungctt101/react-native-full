@@ -21,9 +21,9 @@ export default  class ModalCustom extends Component {
     });
   }
   render() {
-    const {children, onBackPress,alpha} = this.props;
+    const {children, onBackPress,alpha,style,styleModal} = this.props;
     const {visible} = this.state;
-    return (
+    if(visible===true){ return (
       <Modal
         onBackButtonPress={() => {
           if (!objectIsNull(onBackPress)) {
@@ -38,6 +38,7 @@ export default  class ModalCustom extends Component {
           alignItems: 'center',
           marginHorizontal: -Sizes.s20,
           marginBottom: -Sizes.s20,
+          ...styleModal
         }}
         animationIn={'slideInUp'}
         animationOut={'slideOutDown'}
@@ -60,11 +61,15 @@ export default  class ModalCustom extends Component {
             borderRadius: Sizes.s40,
             justifyContent: 'center',
             alignItems: 'center',
+            ...style
             // paddingHorizontal: Sizes.s40,
           }}>
           {children}
         </View>
       </Modal>
-    );
+    );}else{
+      return null
+    }
+   
   }
 }

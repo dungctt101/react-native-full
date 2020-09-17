@@ -4,7 +4,7 @@ import {View, TextInput, TouchableOpacity} from 'react-native';
 import Sizes from './Sizes';
 import Icon from 'react-native-vector-icons/Feather';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
-import {stringIsEmpty} from './Functions';
+import {objectIsNull, stringIsEmpty} from './Functions';
 export default class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ export default class SearchBar extends React.Component {
     };
   }
   render() {
-    const {onChangeText, style, styleInput} = this.props;
+    const {onChangeText, style, styleInput,iconColor,textColor,placeholderTextColor} = this.props;
     const {value} = this.state;
     return (
       <View
@@ -25,11 +25,12 @@ export default class SearchBar extends React.Component {
           justifyContent: 'center',
           alignItems: 'center',
           paddingLeft: Sizes.s20,
-          borderRadius: Sizes.s10,
+          borderRadius: Sizes.s15,
           ...style,
         }}>
-        <Icon name="search" size={Sizes.s40} color={'#717171'} />
+        <Icon name="search" size={Sizes.s40} color={!objectIsNull(iconColor)?iconColor:'#717171'} />
         <TextInput
+        placeholderTextColor={placeholderTextColor}
           value={value}
           placeholder={'Tìm kiếm'}
           onChangeText={text => {
@@ -44,7 +45,7 @@ export default class SearchBar extends React.Component {
             paddingVertical: 0,
             marginLeft: Sizes.s10,
             fontSize: Sizes.h28,
-            color: "#000000",
+            color: !objectIsNull(textColor)?textColor:"#000000",
             fontWeight: "400",
             ...styleInput,
           }}
@@ -62,7 +63,7 @@ export default class SearchBar extends React.Component {
               solid
               name="times-circle"
               size={Sizes.s30}
-              color={'#717171'}
+              color={!objectIsNull(iconColor)?iconColor:'#717171'}
             />
           </TouchableOpacity>
         )}
