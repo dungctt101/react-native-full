@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
-import { objectIsNull } from '@dungdang/react-native-basic/src/Functions';
+import { objectIsNull } from './Functions';
 /**
  * TODO: Swiper View/Slide View
  * @example:

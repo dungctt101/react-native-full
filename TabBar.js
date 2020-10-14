@@ -316,13 +316,16 @@ export default class TabBar extends React.Component {
   }
   render() {
     const {tab, indexSelect} = this.state;
-    const {themes, navigation,imageView,coverView} = this.props;
+    const {themes, navigation,imageView,coverView,menuCircleView} = this.props;
+    // console.log("--->",menuCircleView)
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
 
         <View style={{flex: 1}}>
         {!objectIsNull(imageView)&&imageView()}
           {tab.view}
+
+        {!objectIsNull(menuCircleView) && menuCircleView()}
           </View>
         <TabBarIcon3
 tintColor={this.props.tintColor}
