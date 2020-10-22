@@ -21,11 +21,11 @@ export default  class ModalCustom extends Component {
     });
   }
   render() {
-    const {children, onBackPress,alpha,style,styleModal,disableClickOutside} = this.props;
+    const {children, onBackPress,alpha,style,styleModal,disableClickOutside,disableClickButton} = this.props;
     const {visible} = this.state;
     if(visible===true){ return (
       <Modal
-        onBackButtonPress={disableClickOutside===true ?undefined:() => {
+        onBackButtonPress={disableClickButton===true ?undefined:() => {
           if (!objectIsNull(onBackPress)) {
             onBackPress();
           }
