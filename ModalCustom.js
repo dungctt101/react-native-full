@@ -21,11 +21,11 @@ export default  class ModalCustom extends Component {
     });
   }
   render() {
-    const {children, onBackPress,alpha,style,styleModal} = this.props;
+    const {children, onBackPress,alpha,style,styleModal,disableClickOutside} = this.props;
     const {visible} = this.state;
     if(visible===true){ return (
       <Modal
-        onBackButtonPress={() => {
+        onBackButtonPress={disableClickOutside===true ?undefined:() => {
           if (!objectIsNull(onBackPress)) {
             onBackPress();
           }
@@ -45,14 +45,15 @@ export default  class ModalCustom extends Component {
         backdropOpacity={!objectIsNull(alpha)?alpha: 0.5}
         isVisible={visible}
         coverScreen={true}
-        onBackdropPress={() => {
+        onBackdropPress={disableClickOutside===true ?undefined:() => {
           if (!objectIsNull(onBackPress)) {
             onBackPress();
           }
           this.setState({
             visible: false,
           });
-        }}>
+        }}
+        >
         <View
           style={{
             width: screen.width,
