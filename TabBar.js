@@ -24,7 +24,6 @@ import TabBarAnimation from './tabBar/tabBarAnimation';
 
 import TabBarAnimation2 from './tabBar/tabBarAnimation2';
 import { getStatusBarHeight } from '@dungdang/react-native-full/HeightStatusBar';
-import { colors } from '../../../src/res';
 class TabBarIcon3 extends React.Component {
   constructor(props) {
     super(props);
@@ -317,7 +316,7 @@ export default class TabBar extends React.Component {
   }
   render() {
     const {tab, indexSelect} = this.state;
-    const {themes, navigation,imageView,coverView,menuCircleView,textCover} = this.props;
+    const {themes, navigation,imageView,coverView,menuCircleView,badge} = this.props;
     // console.log("--->",menuCircleView)
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
@@ -327,6 +326,8 @@ export default class TabBar extends React.Component {
           {tab.view}
 
         {!objectIsNull(menuCircleView) && menuCircleView()}
+        {!objectIsNull(badge) &&badge.num>0&& <View style={{width:badge.size,height:badge.size,position:"absolute",right:badge.right,bottom:badge.bottom,backgroundColor:badge.color,justifyContent:"center",
+      alignItems:"center",borderRadius:badge.size}}><Text style={{color:"#ffffff"}}>{badge.num}</Text></View>}
           </View>
         <TabBarIcon3
 tintColor={this.props.tintColor}
@@ -367,10 +368,7 @@ color={this.props.color}
             items={this.props.leftMenuSetting}
           />
         )}
-
-{/* {!objectIsNull(coverView */}
         {!objectIsNull(coverView) &&<View style={{position:"absolute",top:0,left:0,right:0,bottom:0}}>{coverView}</View>}
-        {!stringIsEmpty(textCover)&& <View style={{position:"absolute",top:0,left:0,right:0,backgroundColor:"#F3534A",opacity:0.9,paddingHorizontal:Sizes.s20,paddingVertical:Sizes.s30,justifyContent:"center",alignItems:"center"}}><Text style={{color:"#ffffff",fontSize:Sizes.h32}}>{textCover}</Text></View>}
       </View>
     );
   }

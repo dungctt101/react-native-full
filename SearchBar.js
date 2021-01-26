@@ -13,7 +13,7 @@ export default class SearchBar extends React.Component {
     };
   }
   render() {
-    const {onChangeText, style, styleInput,iconColor,textColor,placeholderTextColor} = this.props;
+    const {onChangeText, style, styleInput,iconColor,textColor,placeholderTextColor,placeholder} = this.props;
     const {value} = this.state;
     return (
       <View
@@ -32,7 +32,7 @@ export default class SearchBar extends React.Component {
         <TextInput
         placeholderTextColor={placeholderTextColor}
           value={value}
-          placeholder={'Tìm kiếm'}
+          placeholder={placeholder===undefined?'Tìm kiếm':placeholder}
           onChangeText={text => {
             this.setState({
               value: text,
